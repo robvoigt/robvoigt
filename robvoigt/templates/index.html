@@ -1,0 +1,63 @@
+{% extends "project_base.html" %}
+
+{% block title %}
+<title>Rob Voigt</title>
+
+{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+
+        <div class="alert alert-warning">
+	  {{ message }}
+	</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<div class="row">
+  <div class="col-sm-12 col-lg-8 col-xl-8">
+
+    <h1>Welcome!</h1>
+
+    <div class="container text-center">
+      <table style="border-collapse:separate; border-spacing:25px;">
+	<tr>
+	  <td><h4>Research</h4></td>
+	  <td><h4>Music</h4></td>
+	  <!--<td><h4>Projects</h4></td>-->
+	</tr>
+	<tr>
+	  <td>
+	    <a href="http://nlp.stanford.edu/robvoigt"><img src="{{ url_for('static', filename='img/su.png') }}" alt="Rob Voigt's Academic Site" height="250px"></a>
+	  </td>
+	  <td>
+	    <a href="https://facsimiles.bandcamp.com/"><img src="{{ url_for('static', filename='img/facs.png') }}" alt="facsimiles - music" height="250px"></a>
+	  </td>
+		 
+	</tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block tail_script %}
+
+<script>
+ 
+  $('document').ready(function(){
+  
+  });
+
+</script>
+
+{% endblock %}

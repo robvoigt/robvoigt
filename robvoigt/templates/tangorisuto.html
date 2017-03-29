@@ -1,0 +1,163 @@
+{% extends "project_base.html" %}
+
+{% block title %}
+<title>Tangorisuto - Japanese Auto-Flashcards</title>
+
+{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+
+        <div class="alert alert-warning">
+	  {{ message }}
+	</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<div class="row">
+  <div class="col-sm-12 col-lg-8 col-xl-8">
+    <h1>単語リスト</h1>
+
+
+<p>This is a program that takes any document with Japanese text and converts it into flashcards 
+   you can use with <a href="http://ankisrs.net/">Anki</a>. The default settings remove very common words and words that don't occur often in the text, but play around with the settings at the bottom!</p>
+
+<p>You can give it a raw text file (including subtitle files like .srt), a web page address, or copy-paste some text directly; in any case all non-Japanese text is automatically removed. (For example, you can find many anime subtitles that should work with this <a href="http://kitsunekko.net/dirlist.php?dir=subtitles%2Fjapanese%2F">here</a>.)</p>
+
+<p> Give it a second after clicking "submit," especially for larger files or webpages. When it's done processing it will download a ".tsv" file, which you can import easily into Anki with the "Import File" button at the bottom.</p>
+
+<p>Made with <a href="http://www.edrdg.org/jmdict/edict.html">EDICT</a> as a dictionary and <a href="http://mecab.googlecode.com/svn/trunk/mecab/doc/index.html">MeCab</a> for morphological analysis. Let me know if you have any questions!</p>
+
+<hr>
+
+<form name="tangorisuto" method=post enctype=multipart/form-data>
+  <fieldset class="form-group">
+    Input Type:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="radio-inline">
+      <input type="radio" name="optionsRadios" id="fileCheck" value="file" checked>File
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optionsRadios" id="webCheck" value="web">Website
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optionsRadios" id="textCheck" value="text">Text
+    </label>
+  </fieldset>
+
+
+  <fieldset class="form-group" id="fileField">
+    <label for="inputFile">File</label>
+    <input type="file" name="inputFile" class="form-control-file" id="inputFile">
+    <small class="text-muted">Upload any text file, maximum size 1MB. Complex file types like .doc, .ppt, and .pdf will not work, although you can often <a href="http://www.it.cornell.edu/services/elist/howto/create-textfile.cfm">save</a> or <a href="http://document.online-convert.com/convert-to-txt">convert</a> such documents to plaintext.</small>
+  </fieldset>
+
+  <fieldset class="form-group hidden" id="webField">
+    <label for="inputWebsite">Web page URL</label>
+    <input type="url" name="inputWebsite" class="form-control" id="inputWebsite">
+    <small class="text-muted">Provide any web page url with Japanese text on it.</small>
+  </fieldset>  
+  
+  <fieldset class="form-group hidden" id="textField">
+    <label for="inputText">Text</label>
+    <textarea name="inputText" class="form-control" id="inputText" rows="3"></textarea>
+    <small class="text-muted">Type or copy-paste any text you'd like.</small>
+
+  </fieldset>
+
+  <div class="checkbox">
+    <label class="checkbox-inline">
+      <input type="checkbox" id="showSettings">Show More Settings
+    </label>
+  </div>
+  <div id="settings" class="hidden">
+
+
+    <fieldset class="form-group">
+      <label for="max_freq">Word Frequency Cutoff</label>
+      <input type="number" name="max_freq" class="form-control" id="max_freq" value="1000">
+      <small class="text-muted">Any words in the top <i>n</i> most common words in Japanese will not be added to the flashcards; this is to remove extremely common words that intermediate/advanced learners are likely to already know. Increase this number to make the cards include only more rare words; decrease it to allow more common words.</small>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="min_count">Minimum Occurrences</label>
+      <input type="number" class="form-control" name="min_count" id="min_count" value="2">
+      <small class="text-muted">Any words that do not occur at least <i>n</i> times in the provided text will not be included in the flashcards; this can be used to remove occasional words that may not be necessary for understanding a given text.</small>
+    </fieldset>
+    
+    <div class="checkbox">
+      <label class="checkbox-inline">
+	<input type="checkbox" name="no_kana" checked="checked" id="no_kana"> Remove Katakana-only Words
+      </label>
+      <label class="checkbox-inline">
+	<input type="checkbox" name="no_gana" id="no_gana"> Remove Hiragana-only Words
+      </label></br>
+      <small class="text-muted">Katakana-only words are removed by default, because they are often names or already obvious in English. Hiragana-only words can also be removed if you'd prefer to focus on Kanji.</small>
+    </div>
+
+    <div class="checkbox">
+      <label class="checkbox-inline">
+	<input type="checkbox" name="jp_to_en" checked="checked" id="jp_to_en"> Generate Japanese-to-English Cards
+      </label>
+      <label class="checkbox-inline">
+	<input type="checkbox" name="en_to_jp" checked="checked" id="en_to_jp"> Generate English-to-Japanese Cards
+      </label></br>
+      <small class="text-muted">Forwards, backwards, or both?</small>
+    </div>
+
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block tail_script %}
+
+<script>
+ 
+  $('document').ready(function(){
+ 
+   $('#fileCheck').change(function() {
+      $('#fileField').show();
+      $('#textField').hide();
+      $('#webField').hide();
+    });
+
+    $('#textCheck').change(function() {
+      $('#textField').removeClass('hidden');
+      $('#textField').show();
+      $('#fileField').hide();
+      $('#webField').hide();
+
+    });
+    $('#webCheck').change(function() {
+      $('#webField').removeClass('hidden');
+      $('#webField').show();
+      $('#textField').hide();
+      $('#fileField').hide();
+    });
+
+    $('#showSettings').change(function() {
+      var ischecked = $(this).is(':checked');
+      if (ischecked) {
+        $('#settings').removeClass('hidden');
+        $('#settings').show();
+      } else {
+        $('#settings').hide();
+      }
+    });
+  });
+
+</script>
+
+{% endblock %}
