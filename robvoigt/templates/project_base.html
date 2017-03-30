@@ -19,12 +19,39 @@
     <!-- Custom CSS -->
     <link href="{{ url_for('static',filename='css/simple-sidebar.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    
+    <style>
+      html { background-color: #d9dbcd; }
+      body { background-color: transparent; }
+
+      html{
+      /* This image will be displayed fullscreen */
+      background:url("{{ url_for('static', filename='img/review.jpg') }}");
+
+      /* Ensure the html element always takes up the full height of the browser window */
+      min-height:100%;
+
+      /* The Magic */
+      background-position: right;
+      background-color: #d9dbcd;
+      background-size: auto 100%;
+      background-repeat: repeat-x;
+      }
+
+      
+    </style>
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    {% block style %}{% endblock %}
+    
 
 </head>
 
@@ -39,8 +66,22 @@
               Rob Voigt
             </a>
           </li>
+
+	  <li><b>Professional</b></li>
+	  <li>
+	    <a href="http://nlp.stanford.edu/robvoigt">&nbsp;&nbsp;&nbsp;academic page</a>
+	  </li>
+	  <li><b>Music</b></li>
+	  <li>
+	    <!--<a href="http://facsimiles.bandcamp.com">&nbsp;&nbsp;&nbsp;facsimiles</a>-->
+	    <a href="{{ url_for('facsimiles') }}">&nbsp;&nbsp;&nbsp;facsimiles</a>
+	    <a href="{{ url_for('radiofilm') }}">&nbsp;&nbsp;&nbsp;for radio and film</a>
+	  </li>
+	  <li><b>Projects</b></li>
+	    
           <li>
-            <a href="{{ url_for('tango') }}">Tangorisuto</a>
+            <a href="{{ url_for('tango') }}">&nbsp;&nbsp;&nbsp;tangorisuto</a>
+
           </li>
 	  
         </ul>
@@ -49,6 +90,12 @@
 
       <!-- Page Content -->
       <div id="page-content-wrapper">
+
+	<!--<a href="#menu-toggle" class="btn btn-default icon-bar visible-xs" id="menu-toggle"></a>-->
+	<!--<img href="#menu-toggle" class="visible-xs text-center" style="max-width: 50%; max-height: 50%; display:block; margin:auto;" id="menu-toggle" src="https://cdn4.iconfinder.com/data/icons/flat-black/128/menu.png">-->
+	<i href="#menu-toggle" class="fa fa-bars fa-5 visible-xs text-center" id="menu-toggle"></i>
+	
+
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-12">
