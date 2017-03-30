@@ -23,6 +23,27 @@ def tango_db_es():
         db.session.add(new_entry)
         db.session.commit()
 
+
+#############
+#
+# music pages
+#
+############
+@app.route('/facsimiles')
+def facsimiles():
+    return render_template('facsimiles.html')
+
+@app.route('/radioandfilm')
+def radiofilm():
+    return render_template('radiofilm.html')
+
+        
+
+#############
+#
+# tangorisuto
+#
+#############
 @app.route('/tango_db')
 def tango_db():
     # initializes tango db - takes a dang while

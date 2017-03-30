@@ -5,6 +5,26 @@
 
 {% endblock %}
 
+{% block style %}
+<style>
+  html{
+  /* This image will be displayed fullscreen */
+  background:url("{{ url_for('static', filename='img/view.jpg') }}") no-repeat;
+
+  /* Ensure the html element always takes up the full height of the browser window */
+  min-height:100%;
+
+  /* The Magic */
+  background-position: right;
+  background-color: #d9dbcd;
+  background-size: auto 100%;
+  }
+
+
+</style>
+
+{% endblock %}
+
 {% block content %}
 
 
@@ -20,28 +40,16 @@
 {% endwith %}
 
 <div class="row">
-  <div class="col-sm-12 col-lg-8 col-xl-8">
+  <div class="col-xs-8 col-sm-6 col-lg-4 col-xl-4">
 
-    <h1>Welcome!</h1>
-
-    <div class="container text-center">
-      <table style="border-collapse:separate; border-spacing:25px;">
-	<tr>
-	  <td><h4>Research</h4></td>
-	  <td><h4>Music</h4></td>
-	  <!--<td><h4>Projects</h4></td>-->
-	</tr>
-	<tr>
-	  <td>
-	    <a href="http://nlp.stanford.edu/robvoigt"><img src="{{ url_for('static', filename='img/su.png') }}" alt="Rob Voigt's Academic Site" height="250px"></a>
-	  </td>
-	  <td>
-	    <a href="https://facsimiles.bandcamp.com/"><img src="{{ url_for('static', filename='img/facs.png') }}" alt="facsimiles - music" height="250px"></a>
-	  </td>
-		 
-	</tr>
-      </table>
-    </div>
+    <!--<h1>Hi there!</h1>-->
+    <br>
+      <p>
+	<h4>I'm Rob,</h4> a <a href="http://nlp.stanford.edu/robvoigt">PhD student</a>, <a href="{{ url_for('facsimiles') }}">musician</a>, and occasional assorted thing-maker.
+      </p>
+    <p>
+      <!--I like to play go-->
+    </p>
 
   </div>
 </div>

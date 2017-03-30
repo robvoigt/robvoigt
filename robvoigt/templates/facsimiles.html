@@ -1,0 +1,70 @@
+{% extends "project_base.html" %}
+
+{% block title %}
+<title>Rob Voigt - Facsimiles</title>
+
+{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+
+        <div class="alert alert-warning">
+	  {{ message }}
+	</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+	<div class="row">
+	  <p><a href="http://wearefacsimil.es">facsimiles</a> is a band that usually mostly consists of me, playing original songs. <p>
+	</div>
+
+	<hr>
+	<div class="row text-center">
+	  <div class="col-sm-12 col-lg-12 col-xl-12">
+	    
+	    <iframe src="https://player.vimeo.com/video/181962045" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	    <!--<p><a href="https://vimeo.com/181962045">Everyone Just Wants</a> on <a href="https://vimeo.com">Vimeo</a>.</p>-->
+
+	  </div>
+	</div>
+	<div class="row text-center hidden-md hidden-sm">
+	  <div class="col-lg-6 col-xl-6">
+	    <h4>2016 EP</h4>
+	    <iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=157156636/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://facsimiles.bandcamp.com/album/pieces-and-parts">pieces and parts by facsimiles</a></iframe>
+	  </div>
+	  <div class="col-lg-6 col-xl-6">
+	    <h4>2015 EP</h4>
+	    <iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2149006805/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://facsimiles.bandcamp.com/album/shelter">shelter by facsimiles</a></iframe>
+	  </div>
+	</div>
+	<div class="row text-center visible-md visible-sm">
+
+	  <div class="col-sm-12 col-md-12">
+	    <h4>2016 EP</h4>
+	    <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=157156636/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://facsimiles.bandcamp.com/album/pieces-and-parts">pieces and parts by facsimiles</a></iframe>
+	  </div>
+
+
+	  <div class="col-sm-12 col-md-12">
+	    <h4>2015 EP</h4>
+	    <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2149006805/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://facsimiles.bandcamp.com/album/shelter">shelter by facsimiles</a></iframe>
+	  </div>
+	  
+	</div>
+	
+{% endblock %}
+
+
+
+{% block tail_script %}
+
+<script>
+ 
+</script>
+
+{% endblock %}
