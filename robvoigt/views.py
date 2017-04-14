@@ -37,7 +37,20 @@ def facsimiles():
 def radiofilm():
     return render_template('radiofilm.html')
 
+
+
         
+
+#############
+#
+# games pages
+#
+#############
+@app.route('/whogotit')
+def whogotit():
+    return render_template('whogotit.html')
+
+
 
 #############
 #
