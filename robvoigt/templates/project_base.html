@@ -23,11 +23,13 @@
     
     <style>
       html { background-color: #d9dbcd; }
-      body { background-color: transparent; }
-
+      body { background-color: transparent;}
+      b { color: LightSteelBlue; }
+      .sidebar-nav li a { color: SteelBlue; }
+      .sidebar-nav > .sidebar-brand a { color: rgb(145, 182, 212); }
       html{
       /* This image will be displayed fullscreen */
-      background:url("{{ url_for('static', filename='img/review.jpg') }}");
+      background-image:url("{{ url_for('static', filename='img/review.jpg') }}");
 
       /* Ensure the html element always takes up the full height of the browser window */
       min-height:100%;
@@ -35,10 +37,10 @@
       /* The Magic */
       background-position: bottom;
       background-color: #d9dbcd;
-      background-size: auto 100%;
+
       background-repeat: repeat-x;
       }
-
+      hr { border-top:1px solid #000000; }
 
       
     </style>
@@ -84,6 +86,11 @@
             <a href="{{ url_for('tango') }}">&nbsp;&nbsp;&nbsp;tangorisuto</a>
 
           </li>
+
+	  <li>
+	    <a href="{{ url_for('whogotit') }}">&nbsp;&nbsp;&nbsp;who got it</a>
+	  </li>
+	  
 	  <hr>
 	  <div class="text-center">
 	    <code style="background-color:#d9dbcd;">hello(at)robvoigt.net</code>

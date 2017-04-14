@@ -1,0 +1,647 @@
+{% extends "project_base.html" %}
+
+{% block title %}
+<title>Rob Voigt - Who Got It?!</title>
+
+{% endblock %}
+
+{% block style %}
+<style>
+  p {
+  text-indent: 2.0em;
+      }  
+  body { padding-bottom: 200px;}
+
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/LaTeXML.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ltx-article.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+
+        <div class="alert alert-warning">
+	  {{ message }}
+	</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+	<div class="row">
+	  <p><span class="ltx_font_smallcaps">Who Got It?!</span> is a card game I came up with, involving memory, language, weirdness, and yelling. Download a pretty and printable copy of the instructions <a href="{{ url_for('static', filename='whogotit.pdf') }}"><span class="ltx_font_smallcaps">here.</span></a></p>
+	</div>
+    <hr>
+	<div class="row">
+	  <div class="col-sm-12 col-lg-12 col-xl-12">
+	    
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+
+  <h3 class="text-center ltx_font_smallcaps">Who Got It?!</h3>
+  <h4 class="text-center"><i>a language and memory freakout party game for two or more players</i></h4>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 &emsp;</span>The Basic Idea</h2>
+
+<div id="S1.p1" class="ltx_para">
+  <p>
+    All you need to play is any deck of cards.
+Each card has a number of attributes, like color, number, and suit. 
+<br class="ltx_break"></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p>Players take turns drawing cards and assigning words to these attributes. If all attributes are assigned, whoever says the card’s full phrase first “<span class="ltx_text ltx_font_smallcaps">got it</span>” – they win the card.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 &emsp; </span>The Basic Game</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p>With a 52-card deck, each card has three attributes:</p>
+<ul id="I1" class="ltx_itemize">
+  
+<li id="I1.ix1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_itemize"></span> 
+<div id="I1.ix1.p1" class="ltx_para">
+  <p class="ltx_p"><span class="ltx_text ltx_font_smallcaps">Color</span>  &emsp; <span class="ltx_text" style="font-size:90%;">red / black</span></p>
+</div>
+</li>
+<li id="I1.ix2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_itemize"></span> 
+<div id="I1.ix2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_smallcaps">Suit</span>  &emsp; <span class="ltx_text" style="font-size:90%;">hearts / diamonds / clubs / spades</span></p>
+</div>
+</li>
+<li id="I1.ix3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_itemize"></span> 
+<div id="I1.ix3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_smallcaps">Value</span> &emsp; <span class="ltx_text" style="font-size:90%;">low (2-5) / medium (6-9) / high (10-K)</span></p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p>Each corresponds to a type of word: colors and suits are adjectives and values are nouns. A fully assigned card is represented by a three word phrase, “[adjective] [adjective] [noun].”
+<br class="ltx_break"></p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p>Play begins with the first player drawing a card from the top of the shuffled deck and placing it face-up on the table. Nothing is assigned yet, so this player gives a three-word phrase for this card. Say it’s a <span class="ltx_text" style="color:#FF0000;"> 3<math id="S2.p3.m1" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">◆</mi></math></span>, and they say “nasty hairy octopus.” Now all <span class="ltx_text" style="color:#FF0000;">red</span> cards are nasty, all diamonds are hairy, and all low value cards are octopi. Any player who assigns an attribute gets to keep the card.
+<br class="ltx_break"></p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p>The next player draws another card, and gets to assign any free attributes. If the second player drew a <span class="ltx_text" style="color:#FF0000;"> Q<math id="S2.p4.m1" class="ltx_Math" alttext="\varheartsuit" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">♥</mi></math></span>, the first word is already “nasty” since the card is <span class="ltx_text" style="color:#FF0000;">red</span>, so they might say “nasty huge astronaut.” Now all hearts are huge and all high cards are astronauts, so the game looks like this:
+</p>
+</div>
+<figure id="S2.tab1" class="ltx_table">
+<table class="ltx_tabular ltx_centering ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center">
+              <span class="ltx_text ltx_font_smallcaps">Color</span>
+            </th>
+<th class="ltx_td ltx_align_center">
+              <span class="ltx_text ltx_font_smallcaps">Suit</span>
+            </th>
+<th class="ltx_td ltx_align_center">
+              <span class="ltx_text ltx_font_smallcaps">Value</span>
+            </th>
+<th class="ltx_td ltx_align_center">
+              <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Phrase</span>
+            </th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">
+<svg id="S2.pic1" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center ltx_border_t">
+<math id="S2.m1" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">◆</mi></math> hairy</td>
+<td class="ltx_td ltx_align_center ltx_border_t">2, 3, 4, 5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" rowspan="1">“nasty hairy octopus”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+<svg id="S2.pic2" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center">
+<math id="S2.m2" class="ltx_Math" alttext="\varheartsuit" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">♥</mi></math> huge</td>
+<td class="ltx_td ltx_align_center">octopus</td>
+<td class="ltx_td ltx_align_center" rowspan="1">“nasty huge octopus”</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+<svg id="S2.pic3" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center">
+<math id="S2.m3" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">◆</mi></math> hairy</td>
+<td class="ltx_td ltx_align_center"> 
+  6,7,8, 9</td>
+<td class="ltx_td">“nasty hairy [?]”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+<svg id="S2.pic4" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center">
+<math id="S2.m4" class="ltx_Math" alttext="\varheartsuit" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">♥</mi></math> huge</td>
+<td class="ltx_td">[?]</td>
+<td class="ltx_td ltx_align_center">“nasty huge [?]”</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+<svg id="S2.pic5" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center">
+<math id="S2.m5" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">◆</mi></math> hairy</td>
+<td class="ltx_td ltx_align_center">
+  
+  10, J, Q, K</td>
+<td class="ltx_td">“nasty hairy astronaut”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+<svg id="S2.pic6" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> nasty</td>
+<td class="ltx_td ltx_align_center">
+<math id="S2.m6" class="ltx_Math" alttext="\varheartsuit" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">♥</mi></math> huge</td>
+<td class="ltx_td">astronaut</td>
+<td class="ltx_td ltx_align_center">“nasty huge astronaut”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S2.p5" class="ltx_para">
+<p>This would repeat for all the black cards, but their color and suit labels are not yet assigned. Play continues in this way around the circle, drawing cards and assigning free attributes. However, whenever a card is drawn for which every attribute is already assigned, it’s up for grabs: whoever can finish correctly saying the three-word phrase first wins the card! For example, if the third player in the above game were to draw a <span class="ltx_text" style="color:#FF0000;"> 10<math id="S2.p5.m1" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathcolor="#FF0000" mathvariant="normal">◆</mi></math></span>, whoever can first say “nasty hairy astronaut” gets it.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 &emsp;</span>Duels</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p>If two or more people finish saying the phrase at precisely the same time, now they’re in a duel. The current player draws another card, and the players in the duel go at it amongst themselves while the others sit out. Duels can extend to multiple cards if any of the duelers continue to tie, and whoever wins gets the whole stack!</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 &emsp;</span>Who Got It?! Cards</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p>Aces and jokers are special “<span class="ltx_text ltx_font_smallcaps">Who Got It</span> cards.” When a player draws one, they become a duelmaster. With as serious a snarl as they can muster, they glance about and say:</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p ltx_align_center"><span class="ltx_text ltx_font_smallcaps">who. got. it.    whogotit?!</span></p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p>… and now they’re in a duel with whoever they lock eyes with on the last “it.” Holding eye contact, they draw another card from the deck and the duel commences.
+<br class="ltx_break"></p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p>If a special card is drawn early in game before most attributes are assigned, put it back in the deck and draw another card.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 &emsp;</span>Principles of Play</h2>
+<div id="S5.p1" class="ltx_para">
+<p><span class="ltx_text ltx_font_smallcaps"> </span></p>
+<dl id="I2" class="ltx_description">
+
+<dt id="I2.ix1" class="ltx_item"><span class="ltx_tag ltx_tag_description">Stay Stylish</span></dt>
+<dd class="ltx_item">
+<div id="I2.ix1.p1" class="ltx_para">
+<br class="ltx_break">
+<p>A core purpose of this game is to make your friends yell weird shit. Be creative with your contributions!</p>
+</div>
+</dd>
+<dt id="I2.ix2" class="ltx_item"><span class="ltx_tag ltx_tag_description">No Backsies</span></dt>
+<dd class="ltx_item">
+<div id="I2.ix2.p1" class="ltx_para">
+<br class="ltx_break">
+<p>When calling out the phrase for a card, you can take as long as you want and pause between words, but you must never say a wrong word. In the “nasty hairy astronaut” example, if you start saying “nasty hu-” and then catch yourself, too late – you’re out for this card.</p>
+</div>
+</dd>
+<dt id="I2.ix3" class="ltx_item"><span class="ltx_tag ltx_tag_description">Cooperation is Good</span></dt>
+<dd class="ltx_item">
+<div id="I2.ix3.p1" class="ltx_para">
+<br class="ltx_break">
+<p>It can be hard to remember all this random stuff. Between cards during the game, it’s fine to pause and ask for clarification or go over the labels.
+</p>
+</div>
+</dd>
+<dt id="I2.ix4" class="ltx_item"><span class="ltx_tag ltx_tag_description">Be Assertive</span></dt>
+<dd class="ltx_item">
+<div id="I2.ix4.p1" class="ltx_para">
+<br class="ltx_break">
+<p>Especially in a big group, inevitably people will step on each other’s toes; if you were in there first, speak up!</p>
+</div>
+</dd>
+</dl>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 &emsp;</span>Finishing Up</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p>A round ends when the deck is fully used up. Players count their cards, and get one point per card. A game consists of one or more rounds, where the cards are reshuffled between each. Each round can either stick with the existing labels from the previous round (to test your fluency) or can start fresh so everything has to be re-assigned (to test your flexibility). 
+<br class="ltx_break"></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p>Whoever has the most points in the end is the winner.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p ltx_align_center">Congrats, winner.    <span class="ltx_text ltx_font_smallcaps">You Got It.</span></p>
+</div>
+
+<div class="ltx_pagination ltx_role_newpage"></div>
+<hr>
+<h3 class="text-center ltx_font_smallcaps">Who Got It?! </h3><h4 class="text-center"><i>Variants</i></h4>
+<div id="S6.p4" class="ltx_para">
+<p>The basic rules given above are just a start – below are some possible variations on the core game to try!</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 &emsp;</span>Defining Attributes</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p>The attributes given above are by no means the only attributes you could use. 
+<br class="ltx_break"></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p>You could decide, for example, to divide values into simply “numbers” (2-10) and “face cards” (J, Q, K), or by parity into “even” (2, 4, 6, 8, 10, Q) and “odd” (3, 5, 7, 9, J, K).
+<br class="ltx_break"></p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p>You could also play with an expanded or varied deck. The original version of the game was played with the 2 through 8 cards from two decks, where each number was its own noun. 
+<br class="ltx_break"></p>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p>You could even play with a deck of cards from a different game. For instance, if you use a <a href="https://en.wikipedia.org/wiki/Set_(game)" title="" class="ltx_ref">Set</a> deck, the attributes would just be the Set card attributes (number, shape, shading, color). 
+<br class="ltx_break"></p>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p>You could even make crazy variations by mixing together cards from different decks, and the card style could be an attribute as well. Anything can be an attribute - play around!</p>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8 &emsp;</span>Difficulty Levels</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p>The difficulty level of the game is proportional to how many words need to be recalled and the total number of possible outcomes. In the basic version of the game we have</p>
+<ul id="I3" class="ltx_itemize">
+
+
+<li id="I3.ix1" class="ltx_item" style="list-style-type:none;">
+<div id="I3.ix1.p1" class="ltx_para">
+<p><span class="ltx_text ltx_font_smallcaps">Standard</span>&emsp;  2 colors <math id="I3.ix1.p1.m1" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 4 suits <math id="I3.ix1.p1.m2" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 3 values</p>
+</div>
+</li>
+</ul>
+<p>and since colors and suits overlap (i.e., there’s no black <math id="S8.p1.m1" class="ltx_Math" alttext="\blacklozenge" display="inline"><mi mathvariant="normal">◆</mi></math>), we get 12 possible three-word phrases that could represent a card. 
+<br class="ltx_break"></p>
+</div>
+<div id="S8.p2" class="ltx_para">
+<p>The game can be vastly simplified – or at least focused more on reaction time – by simply cutting out the suits, so we have</p>
+<ul id="I4" class="ltx_itemize">
+<li id="I4.ix1" class="ltx_item" style="list-style-type:none;">
+<div id="I4.ix1.p1" class="ltx_para">
+<p><span class="ltx_text ltx_font_smallcaps">Easy</span> &emsp;  2 colors <math id="I4.ix1.p1.m1" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 3 values</p>
+</div>
+</li>
+</ul>
+<p>or only 6 two-word phrases. This can be a good way to play to get people started.
+<br class="ltx_break"></p>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p>On the other hand, we can make the game arbitrarily more difficult by adding more attributes, or making the existing attributes more fine-grained. If we take the example of even/odd parity from above, we now have</p>
+<ul id="I5" class="ltx_itemize">
+<li id="I5.ix1" class="ltx_item" style="list-style-type:none;">
+<div id="I5.ix1.p1" class="ltx_para">
+<p><span class="ltx_text ltx_font_smallcaps">Hard</span> &emsp; 2 colors <math id="I5.ix1.p1.m1" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 2 parities <math id="I5.ix1.p1.m2" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 4 suits <math id="I5.ix1.p1.m3" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 3 values</p>
+</div>
+</li>
+</ul>
+<p>which gives 24 possible four-word phrases.
+<br class="ltx_break"></p>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p>Or we could switch color for parity to remove the overlap with suits, and order values by every three cards (2, 3, 4; then 5, 6, 7; then 8, 9, 10; then J, Q, K), so we get</p>
+<ul id="I6" class="ltx_itemize">
+
+
+<li id="I6.ix1" class="ltx_item" style="list-style-type:none;">
+<div id="I6.ix1.p1" class="ltx_para">
+<p><span class="ltx_text ltx_font_smallcaps">Hard</span> &emsp; 2 parities <math id="I6.ix1.p1.m1" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 4 suits <math id="I6.ix1.p1.m2" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math> 5 values</p>
+</div>
+</li>
+</ul>
+<p>for a total of 40 possible three-word phrases. See how your group handles the game, and adjust the difficulty accordingly!</p>
+</div>
+
+</section>
+<section id="S9" class="ltx_section">
+<br>
+  <h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">9 &emsp;</span>Scheming and Theming</h2>
+
+<section id="S9.SS0.SSS1" class="ltx_subsubsection">
+<h3 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection"> </span>Schemes</h3>
+
+<div id="S9.SS0.SSS1.p1" class="ltx_para">
+<p>Another part of the game that can be varied is the “scheme” – the ordering of attributes and types of words in the phrases you make. The scheme for the standard game above is:</p>
+</div>
+<figure id="S9.SS0.SSS1.tab1" class="ltx_table">
+<table class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">[adjective]</td>
+<td class="ltx_td ltx_align_center">[adjective]</td>
+<td class="ltx_td ltx_align_center">[noun]</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Color <math id="S9.SS0.SSS1.m1" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 2</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Suit <math id="S9.SS0.SSS1.m2" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 4</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Value <math id="S9.SS0.SSS1.m3" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 3</span>
+              </td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S9.SS0.SSS1.p2" class="ltx_para">
+<p>But why not get creative and change this around? Here’s an example based on the <span class="ltx_text ltx_font_smallcaps">Easy</span> difficulty level on the left, with the values coming first and a scheme for compound nouns:</p>
+</div>
+<figure id="S9.SS0.SSS1.tab2" class="ltx_table">
+<table class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">[noun]</td>
+<td class="ltx_td ltx_align_center">[noun]</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Value <math id="S9.SS0.SSS1.m4" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 3</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Color <math id="S9.SS0.SSS1.m5" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 2</span>
+              </td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S9.SS0.SSS1.p3" class="ltx_para">
+<p>With this scheme we might have a game that ends up like so:</p>
+</div>
+<figure id="S9.SS0.SSS1.tab3" class="ltx_table">
+<table class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Value</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Color</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Phrase</span>
+              </td>
+</tr>
+<tr class="ltx_tr ltx_border_t">
+<td class="ltx_td ltx_align_center">2, 3, 4, 6</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic1" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> stew</td>
+<td class="ltx_td ltx_align_center">“cabbage stew”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td">cabbage</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic2" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> barf</td>
+<td class="ltx_td ltx_align_center">“cabbage barf”</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">6, 7, 8, 9</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic3" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> stew</td>
+<td class="ltx_td ltx_align_center">“dog stew”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td">dog</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic4" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> barf</td>
+<td class="ltx_td ltx_align_center">“dog barf”</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">10, J, Q, K</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic5" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#FF0000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> stew</td>
+<td class="ltx_td ltx_align_center">“weasel stew”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td">weasel</td>
+<td class="ltx_td ltx_align_left">
+<svg id="S9.SS0.SSS1.pic6" class="ltx_picture" height="15.87" version="1.1" viewBox="-13.16 -7.93 26.33 15.87" width="26.33"><g transform="matrix(1 0 0 -1 0 0.00999999999999979)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><g fill="#000000"><g stroke="#000000"><g stroke-width="0.8pt"><path d="M 7.08 4.61 L -7.08 4.61 C -8.6 4.61 -9.84 3.37 -9.84 1.84 L -9.84 -1.84 C -9.84 -3.37 -8.6 -4.61 -7.08 -4.61 L 7.08 -4.61 C 8.6 -4.61 9.84 -3.37 9.84 -1.84 L 9.84 1.84 C 9.84 3.37 8.6 4.61 7.08 4.61 Z M -9.84 -4.61"></path></g></g></g><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="0" overflow="visible" width="0"></foreignObject></switch></g></g></g></g></g></g></g></g></g></svg> barf</td>
+<td class="ltx_td ltx_align_center">“weasel barf”</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S9.SS0.SSS1.p4" class="ltx_para">
+<p>We can even make sentences about people in the room:
+</p>
+</div>
+<figure id="S9.SS0.SSS1.tab4" class="ltx_table">
+<table class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">[person’s name]</td>
+<td class="ltx_td ltx_align_center">[verb]</td>
+<td class="ltx_td ltx_align_center">[noun]</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Suit <math id="S9.SS0.SSS1.m6" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 4</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Value <math id="S9.SS0.SSS1.m7" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 3</span>
+              </td>
+<td class="ltx_td ltx_align_center">
+                <span class="ltx_text ltx_font_smallcaps" style="font-size:70%;">Parity <math id="S9.SS0.SSS1.m8" class="ltx_Math" alttext="\times" display="inline"><mo mathsize="142%" mathvariant="normal" stretchy="false">×</mo></math> 2</span>
+              </td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S9.SS0.SSS1.p5" class="ltx_para">
+<p>So maybe we’ll get a 6<math id="S9.SS0.SSS1.p5.m1" class="ltx_Math" alttext="\spadesuit" display="inline"><mi mathvariant="normal">♠</mi></math> with the phrase “Rob milks unicorns,” where all the spades are “Rob,” the middle cards are the verb “to milk,” and the even cards are unicorns.</p>
+</div>
+</section>
+<section id="S9.SS0.SSS2" class="ltx_subsubsection">
+<h3 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection"> </span>Themes</h3>
+
+<div id="S9.SS0.SSS2.p1" class="ltx_para">
+<p>As you may notice, in spite of the seeming randomness in how words get jammed together in this game, sometimes themes will naturally coalesce over the course of a game. But we can also decide on a theme from the start! It could be as simple as deciding to aim for “outer space” or “bodily functions.” 
+<br class="ltx_break"></p>
+</div>
+<div id="S9.SS0.SSS2.p2" class="ltx_para">
+<p>Here are a few examples of more complex schemes and themes you could try. Let me know if you find a particularly fun one!</p>
+</div>
+<figure id="S9.SS0.SSS2.tab1" class="ltx_table">
+<table class="ltx_tabular ltx_align_middle ltx_centering">
+
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+
+<td class="ltx_td">                
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Scheme</span>
+              </td>
+
+<td class="ltx_td">                                
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Theme</span>
+              </td>
+
+<td class="ltx_td">                                
+                <span class="ltx_text ltx_font_bold ltx_font_smallcaps">Example</span>
+              </td>
+</tr>
+  <tr class="ltx_tr ltx_border_t">
+<td class="ltx_td">                                
+                <span class="ltx_text">[adjective] [name] [verb]</span>
+              </td>
+
+<td class="ltx_td">                                                
+                <span class="ltx_text">goofy insults</span>
+              </td>
+
+<td class="ltx_td">                                                
+                <span class="ltx_text">“stupid Abby poops”</span>
+              </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+
+<td class="ltx_td">                
+                <span class="ltx_text">this is my friend [animal], the [profession]</span>
+              </td>
+<td class="ltx_td">                
+                
+                <span class="ltx_text">introductions at the zoo cocktail party</span>
+              </td>
+<td class="ltx_td">                                
+                <span class="ltx_text">“this is my friend Gorilla, the neurosurgeon”</span>
+              </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+
+<td class="ltx_td">                                                
+                <span class="ltx_text">[literary theory verb] [author]’s [fancy noun]</span>
+              </td>
+
+<td class="ltx_td">                                                
+                <span class="ltx_text">snobby paper titles</span>
+              </td>
+
+<td class="ltx_td">                                                
+                <span class="ltx_text">“deconstructing Foucault’s marginality”</span>
+              </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+<td class="ltx_td">                                                
+                <span class="ltx_text">[pronoun] [are / are not] [noun]</span>
+              </td>
+<td class="ltx_td">                                                                
+                <span class="ltx_text">who are we, really?</span>
+              </td>
+<td class="ltx_td">                                                                
+                <span class="ltx_text">“I am a coconut!” “You are not a walrus!”</span>
+              </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr class="ltx_tr">
+<td class="ltx_td">                                                                
+                <span class="ltx_text">it’s like [company name] for [market segment]</span>
+              </td>
+
+<td class="ltx_td">                                                                                
+                <span class="ltx_text">silicon valley startup ideas</span>
+              </td>
+
+<td class="ltx_td">                                                                                
+                <span class="ltx_text">“it’s like Snapchat for infants”</span>
+              </td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_justify ltx_align_middle" style="width:160.4pt;">
+              </td>
+<td class="ltx_td ltx_align_justify ltx_align_middle" style="width:121.4pt;"></td>
+<td class="ltx_td ltx_align_justify ltx_align_middle" style="width:108.4pt;"></td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+</section>
+<br>
+
+</article>
+
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">This page generated with the help of <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"></a>
+</div>
+<br>
+&nbsp;
+<div id="S2.p6" class="ltx_para">
+<img src="{{ url_for('static', filename='cc.png') }}" id="S2.p6.g1" class="ltx_graphics" width="88" height="31" alt="">
+
+<span class="ltx_text ltx_caption ltx_align_center"><span class="ltx_text ltx_font_smallcaps">Who Got It?!</span> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="" class="ltx_ref">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. Feel free to share and spread around for any non-commercial purpose!</span></p>
+</div>
+
+</footer>
+</div>
+    </div>
+	</div>
+	
+{% endblock %}
+
+
+
+{% block tail_script %}
+
+
+{% endblock %}
