@@ -192,4 +192,27 @@ def do_tango(text, max_freq=1000, min_count=2, no_kana=True, no_gana=False, jp_t
                 flashcards += '%s \t %s   %s\n' %(definition, word, pron)            
     return flashcards
 
+
+def make_memories_json():
+    import csv, json
+    csv_in = os.path.join(app.static_folder, 'MemoriesofJoan.csv')
+    json_out = os.path.join(app.static_folder, 'MemoriesofJoan.json')
+    jdict = []
+    with open(csv_in) as csvfile:
+        reader = csv.DictReader(csv_in)
+        for row in reader:
+            try:
+                ts = row['Timestamp'].split()[0].split('/')
+            except:
+                continue
+            date = ts[1] + '/' + ts[0] + '/' + ts[2]
+            name = row['Name']
+            mems = row['Your Memories and Reflections']
+            jdict.append({'name':name,
+                          'date':date,
+                          'mems':mems})
+    json.dump(jdict, open(json_out,'w'))
+    return json_out
     
+
+        

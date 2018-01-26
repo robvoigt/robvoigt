@@ -120,3 +120,14 @@ def tango():
         output.headers["Content-type"] = "text/tsv"
         return output
     return render_template('tangorisuto.html')
+
+
+################
+#
+# personal pages
+#
+################
+@app.route('/memoriesofjoan')
+def memoriesofjoan():
+    mems_json = os.path.join(app.static_folder, 'MemoriesofJoan.json')
+    return render_template('memoriesofjoan.html', mems_json=mems_json)
